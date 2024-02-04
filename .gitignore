@@ -1,5 +1,7 @@
 *.pyc
-*.sqlite3
+settings.py
+db.sqlite3
 migrations/
 staticfiles/
 media/
+*.pdf
