@@ -1,0 +1,64 @@
+{% extends "note/base.html" %}
+{% load static %}
+
+{% block style %}
+<style>
+    /* Custom Styles */
+    body {
+        background-color: #f8f9fa;
+    }
+    .navbar {
+        background-color: #333;
+        color: #fff;
+    }
+    .navbar a {
+        color: #fff;
+    }
+    .blog-card {
+        border: 1px solid #ddd;
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .blog-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+    .blog-card h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .blog-card p {
+        font-size: 16px;
+    }
+    .photo-container {
+    max-width: 30%; /* You can adjust this value as needed */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="blog-card">
+        <h2>{{ note.title }}</h2>
+        <div class="photo-container">
+            {% if note.image %}
+                <img src="{{ note.image.url }}" alt="Blog Image">
+        {% endif %}
+            </div>
+        <p>{{ note.content }}</p>
+        <p>{{ note.date_posted }}</p>
+        <p>Posted by {{ note.author }}</p>
+    </div>
+</div>
+
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
+
+</body>
+</html>
+
+

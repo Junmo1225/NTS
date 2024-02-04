@@ -1,0 +1,72 @@
+{% extends "note/base.html" %}
+{% load static %}
+
+{% block style %}
+<style>
+/* Custom Styles */
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    background-color: #333;
+    color: #fff;
+}
+.navbar a {
+    color: #fff;
+}
+.blog-card {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.blog-card img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.blog-card-content {
+    flex-grow: 1;
+}
+.blog-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.blog-card p {
+    font-size: 14px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-6">
+            <div class="blog-card">
+                {% if note.image %}
+                    <img src="{{ note.image.url }}" alt="Blog Image">
+                {% endif %}
+                <div class="blog-card-content">
+                    <h3><a href="{% url 'note:note_detail' note_id=note.id %}">{{ note.title }}</a></h3>
+                    <p>{{ note.content|truncatechars:69 }}</p>
+                    <p>Date Posted: {{ note.date_posted }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- Add Bootstrap JS (Optional) -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
+</body>
+</html>
